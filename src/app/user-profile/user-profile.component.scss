@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap');
+
+h1, h2, p, .profileButtons {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    color: #000;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+p {
+  font-weight: 400;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profileButtons {
+    background-color: #f2f2f2;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .profileButtons {
+    opacity: 80%;
+  }
+
+  span {
+    font-weight: 200;
+  }

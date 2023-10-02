@@ -1,0 +1,44 @@
+<div class="movie-grid">
+  <div *ngFor="let movie of movies" class="movie-card">
+    <mat-card role="article">
+      <mat-card-header>
+          <mat-card-title class="movieTitle">{{ movie.title }}</mat-card-title>
+          <mat-card-subtitle class="directorName">Directed by: {{ movie.director.name }}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="movie-image-container">
+          <img src={{movie.imageUrl}} alt= {{movie.title}} class="movieImage"/>
+      </div>
+      <mat-card-actions class="actions">
+          <button
+              mat-button
+              (click)="openGenreInfo(movie.genre)"
+              aria-label="View Genres"
+          >
+              Genre
+          </button>
+          <button
+              mat-button
+              (click)="openDirectorInfo(movie.director)"
+              aria-label="View Director Information"
+          >
+              Director
+          </button>
+          <button
+              mat-button
+              (click)="openMovieInfo(movie.title, movie.description)"
+              aria-label="View Synopsis"
+          >
+              Synopsis
+          </button>
+          <button
+           mat-icon-button
+          [ngClass]="{ 'favorite': isMovieFavorite(movie) }"
+           (click)="toggleFavorite(movie)"
+           aria-label="Add to Favorites"
+           >
+  <mat-icon>favorite</mat-icon>
+</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

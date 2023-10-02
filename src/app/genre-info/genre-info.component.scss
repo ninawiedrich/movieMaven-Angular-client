@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap');
+
+h4, .genreDescription, button {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+}
+
+h4 {
+    font-weight: 600;
+    color: #000;
+}
+
+.genreDescription {
+    font-weight: 200;
+}
+
+.genreButtonContainer {
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+button {
+    color: #000;
+    background-color: #f2f2f2;
+}
+
+button:hover {
+    opacity: 80%;
+}

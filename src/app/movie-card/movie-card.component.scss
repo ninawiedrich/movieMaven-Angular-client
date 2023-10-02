@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap');
+
+.movieTitle {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+}
+
+.directorName {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+.movie-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.movieImage {
+    max-width: 75%;
+    box-sizing: border-box;
+    border-radius: 5%;
+    border: 1px solid #000;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favorite {
+    color: red;
+  }
+
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px;
+    justify-content: center;
+  }
+  
+  .movie-card {
+    width: 90%;
+    max-width: 300px;
+    margin: 15px;
+  }
+  

@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap');
-
 .navbar {
-    background-color: white;
+  background-color: #000;
+  border-bottom: 2px solid white;
+ margin-bottom: 50px;
+  height: 70px;
 }
 
-mat-buttom {
-    font-family: 'Josefin Sans', sans-serif;
-    text-align: center;
+.mat-button {
+  color: white;
+  &:hover {
+      color: #000202;
+  }
 }

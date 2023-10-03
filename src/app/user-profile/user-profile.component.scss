@@ -1,42 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap');
-
 h1, h2, p, .profileButtons {
-    font-family: 'Josefin Sans', sans-serif;
-    text-align: center;
-    color: #000;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  color: #EDEDED;
 }
 
 h1 {
-    font-weight: 600;
-}
-
-h2 {
-  font-weight: 400;
-}
-
-p {
-  font-weight: 400;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
 }
 
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
 
-  .profileButtons {
-    background-color: #f2f2f2;
-    margin-bottom: 20px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-
-  .profileButtons {
-    opacity: 80%;
-  }
-
-  span {
-    font-weight: 200;
-  }
+.info-container, form {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}

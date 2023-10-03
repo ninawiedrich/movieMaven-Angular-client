@@ -1,14 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap');
 
-.movieTitle {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 600;
-}
-
-.directorName {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-}
 
 .movie-image-container {
   display: flex;
@@ -45,5 +35,21 @@
     width: 90%;
     max-width: 300px;
     margin: 15px;
+    background-color: #f2f2f2;
   }
+
+  .movieTitle {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.directorName {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #000;
+}
+
   

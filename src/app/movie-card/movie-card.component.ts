@@ -57,42 +57,51 @@ export class MovieCardComponent {
     });
   }
 
-  // Function to add/remove movie to/from favorites
-  toggleFavorite(movie: any): void {
-    // Toggle the favorite status of the movie
-    if (this.isMovieFavorite(movie)) {
-      // Remove the movie from favorites locally
-      const user = JSON.parse(localStorage.getItem('user') || '{}');
-      user.favoriteMovies = user.favoriteMovies.filter((id: string) => id !== movie._id);
-      localStorage.setItem('user', JSON.stringify(user));
-    } else {
-      // Add the movie to favorites locally
-      const user = JSON.parse(localStorage.getItem('user') || '{}');
-      if (user.favoriteMovies) {
-        user.favoriteMovies.push(movie._id);
+    // Function to add/remove movie to/from favorites
+    toggleFavorite(movie: any): void {
+      // Toggle the favorite status of the movie
+      if (this.isMovieFavorite(movie)) {
+        // Remove the movie from favorites locally
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        user.favoriteMovies = user.favoriteMovies.filter((id: string) => id !== movie._id);
+        localStorage.setItem('user', JSON.stringify(user));
+    
+        // Remove the movie from favorites on the backend server
+        this.fetchApiData.deleteFavoriteMovie(movie._id).subscribe(
+          () => {
+            console.log('Movie removed from favorites successfully.');
+          },
+          (error) => {
+            console.error('Error removing movie from favorites:', error);
+          }
+        );
       } else {
-        user.favoriteMovies = [movie._id];
+        // Add the movie to favorites locally
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        user.favoriteMovies.push(movie._id);
+        localStorage.setItem('user', JSON.stringify(user));
+    
+        // Add the movie to favorites on the backend server
+        this.fetchApiData.addFavoriteMovie(movie._id).subscribe(
+          () => {
+            console.log('Movie added to favorites successfully.');
+          },
+          (error) => {
+            console.error('Error adding movie to favorites:', error);
+          }
+        );
       }
-      localStorage.setItem('user', JSON.stringify(user));
-
-      // Add the movie to favorites on the backend server
-      this.fetchApiData.addFavoriteMovie(movie._id).subscribe(
-        () => {
-          console.log('Movie added to favorites successfully.');
-        },
-        (error) => {
-          console.error('Error adding movie to favorites:', error);
-        }
-      );
+    
+      // Update the local 'isFavorite' property to reflect the change
+      movie.isFavorite = !this.isMovieFavorite(movie);
     }
-
-    // Update the local 'isFavorite' property to reflect the change
-    movie.isFavorite = !this.isMovieFavorite(movie);
-  }
-
-  // Function to check if a movie is in favorites
-  isMovieFavorite(movie: any): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.favoriteMovies && user.favoriteMovies.includes(movie._id);
-  }
-}
+    
+    
+  
+    // Function to check if a movie is in favorites
+    isMovieFavorite(movie: any): boolean {
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      return user.favoriteMovies && user.favoriteMovies.includes(movie._id);
+    }
+    
+    }

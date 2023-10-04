@@ -35,20 +35,3 @@ $movieMaven-Angular-client-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-body {
-  font-family: 'Roboto', sans-serif;
-
-}
-
-h1, h2, h3 {
-  font-family: 'Cinzel', serif;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-

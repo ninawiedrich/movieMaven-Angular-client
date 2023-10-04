@@ -28,10 +28,6 @@ ngOnInit(): void {
 }
 
 // This is the function responsible for sending the form inputs to the backend
-/**
- * Function responsible for sending the form inputs to the backend to create a new user account
- * @returns alert saying whether the registration was successful or not
- */
 registerUser(): void {
   this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
     // Logic for a successful user registration goes here! (To be implemented)

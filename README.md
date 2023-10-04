@@ -2,26 +2,47 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
-## Development server
+It is a responsive movie app built using Angular, designed to showcase your Angular skills and serve movie enthusiasts.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
+- [The 5 W’s](#the-5-ws)
+- [User Stories](#user-stories)
+- [Key Features](#key-features)
+- [Technical Requirements](#technical-requirements)
+- [Development](#development)
+  - [Further Help](#further-help)
 
-## Code scaffolding
+## The 5 W’s
+* **Who:** Users of the myFlix movie app and its codebase, including developers and designers.
+* **What:** A movie app built with Angular.
+* **When:** Accessible anytime.
+* **Where:** Hosted online for universal access.
+* **Why:** A platform for movie details and demonstration of Angular prowess.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## User Stories
+* Access movie, director, and genre details.
+* Create a user profile to save favorite movies.
 
-## Build
+## Key Features
+1. **Welcome View:** User authentication options.
+2. **Movie Views:** Display of all movies with details on selection:
+   * Director data.
+   * Genre specifics.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technical Requirements
+* Built with Angular (version 9+).
+* Requires latest Node.js and npm.
+* Includes user authentication mechanisms.
+* Design using Angular Material.
+* Commented with Typedoc and technical documentation via JSDoc.
+* Hosted on GitHub Pages.
 
-## Running unit tests
+## Development
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Development Server
 
-## Running end-to-end tests
+Use `ng serve` for a dev server. The app will be accessible at `http://localhost:4200/`. Live-reloading is enabled for any source file changes.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Further Help
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To get more help on the Angular CLI use `ng help` or check out the [Angular CLI README].

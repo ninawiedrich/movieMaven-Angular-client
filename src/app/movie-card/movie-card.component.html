@@ -13,6 +13,7 @@
               mat-button
               (click)="openGenreInfo(movie.genre)"
               aria-label="View Genres"
+              style="color: #fff;"
           >
               Genre
           </button>
@@ -20,6 +21,7 @@
               mat-button
               (click)="openDirectorInfo(movie.director)"
               aria-label="View Director Information"
+              style="color: #fff;"
           >
               Director
           </button>
@@ -27,6 +29,7 @@
               mat-button
               (click)="openMovieInfo(movie.title, movie.description)"
               aria-label="View Synopsis"
+              style="color: #fff;"
           >
               Synopsis
           </button>
@@ -36,8 +39,8 @@
            (click)="toggleFavorite(movie)"
            aria-label="Add to Favorites"
            >
-  <mat-icon>favorite</mat-icon>
-</button>
+           <mat-icon [style.color]="isMovieFavorite(movie) ? 'red' : '#fff'">favorite</mat-icon>
+          </button>
       </mat-card-actions>
     </mat-card>
   </div>

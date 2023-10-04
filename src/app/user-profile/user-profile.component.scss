@@ -1,42 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap');
 
-h1, h2, p, .profileButtons {
-    font-family: 'Josefin Sans', sans-serif;
-    text-align: center;
-    color: #000;
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+
+.profile-container {
+  max-width: 1000px; 
+  margin: 0 auto;    
+  padding: 20px;
+}
+
+.sections {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 80px;
+}
+
+.info-container, .update-form {
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.info-container {
+  flex: 0.4;
+  text-align: left;
+}
+
+.update-form {
+  flex: 0.6;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.update-form mat-form-field {
+  width: 48%; /* for 2x2 layout */
 }
 
 h1 {
-    font-weight: 600;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
 }
 
 h2 {
   font-weight: 400;
+  font: Poppins;
 }
 
 p {
   font-weight: 400;
+  text-align: left;
 }
 
-.profile-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+span {
+  font-weight: 200;
+}
 
-  .profileButtons {
-    background-color: #f2f2f2;
-    margin-bottom: 20px;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
+.profileButtons {
+  background-color: grey;
+  margin: 10px;
+  color: #fff;
+}
 
-  .profileButtons {
-    opacity: 80%;
-  }
+.favorites {
+  width: 96%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: #fff;
+}
 
-  span {
-    font-weight: 200;
-  }
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+span {
+  color: #fff;
+  font-weight: 200;
+}

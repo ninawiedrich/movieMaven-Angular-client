@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls: ['./navigation.component.scss'],
 })
+
 export class NavigationComponent {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
-
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   toMovies(): void {
     this.router.navigate(['movies']);
@@ -24,5 +24,4 @@ export class NavigationComponent {
     this.router.navigate(['welcome']);
     localStorage.clear();
   }
-
 }

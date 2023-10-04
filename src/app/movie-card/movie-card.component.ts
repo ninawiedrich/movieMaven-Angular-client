@@ -9,13 +9,15 @@ import { DirectorInfoComponent } from '../director-info/director-info.component'
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss']
+  styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent {
   movies: any[] = [];
-  constructor(public fetchApiData: FetchApiDataService,
-              public snackbar: MatSnackBar,
-              public dialog: MatDialog) { }
+  constructor(
+    public fetchApiData: FetchApiDataService,
+    public snackbar: MatSnackBar,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getMovies();
@@ -33,17 +35,17 @@ export class MovieCardComponent {
     this.dialog.open(MovieInfoComponent, {
       data: {
         title: title,
-        description: description
-      }
+        description: description,
+      },
     });
   }
 
   openGenreInfo(genre: any): void {
-    console.log('Genre Object:', genre)
+    console.log('Genre Object:', genre);
     this.dialog.open(GenreInfoComponent, {
       data: {
-        genre: genre
-      }
+        genre: genre,
+      },
     });
   }
 
@@ -52,56 +54,55 @@ export class MovieCardComponent {
       data: {
         name: director.name,
         Bio: director.bio,
-        dateOfBirth: director.birth
-      }
+        dateOfBirth: director.birth,
+      },
     });
   }
 
-    // Function to add/remove movie to/from favorites
-    toggleFavorite(movie: any): void {
-      // Toggle the favorite status of the movie
-      if (this.isMovieFavorite(movie)) {
-        // Remove the movie from favorites locally
-        const user = JSON.parse(localStorage.getItem('user') || '{}');
-        user.favoriteMovies = user.favoriteMovies.filter((id: string) => id !== movie._id);
-        localStorage.setItem('user', JSON.stringify(user));
-    
-        // Remove the movie from favorites on the backend server
-        this.fetchApiData.deleteFavoriteMovie(movie._id).subscribe(
-          () => {
-            console.log('Movie removed from favorites successfully.');
-          },
-          (error) => {
-            console.error('Error removing movie from favorites:', error);
-          }
-        );
-      } else {
-        // Add the movie to favorites locally
-        const user = JSON.parse(localStorage.getItem('user') || '{}');
-        user.favoriteMovies.push(movie._id);
-        localStorage.setItem('user', JSON.stringify(user));
-    
-        // Add the movie to favorites on the backend server
-        this.fetchApiData.addFavoriteMovie(movie._id).subscribe(
-          () => {
-            console.log('Movie added to favorites successfully.');
-          },
-          (error) => {
-            console.error('Error adding movie to favorites:', error);
-          }
-        );
-      }
-    
-      // Update the local 'isFavorite' property to reflect the change
-      movie.isFavorite = !this.isMovieFavorite(movie);
-    }
-    
-    
-  
-    // Function to check if a movie is in favorites
-    isMovieFavorite(movie: any): boolean {
+  // Function to add/remove movie to/from favorites
+  toggleFavorite(movie: any): void {
+    // Toggle the favorite status of the movie
+    if (this.isMovieFavorite(movie)) {
+      // Remove the movie from favorites locally
       const user = JSON.parse(localStorage.getItem('user') || '{}');
-      return user.favoriteMovies && user.favoriteMovies.includes(movie._id);
+      user.favoriteMovies = user.favoriteMovies.filter(
+        (id: string) => id !== movie._id
+      );
+      localStorage.setItem('user', JSON.stringify(user));
+
+      // Remove the movie from favorites on the backend server
+      this.fetchApiData.deleteFavoriteMovie(movie._id).subscribe(
+        () => {
+          console.log('Movie removed from favorites successfully.');
+        },
+        (error) => {
+          console.error('Error removing movie from favorites:', error);
+        }
+      );
+    } else {
+      // Add the movie to favorites locally
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      user.favoriteMovies.push(movie._id);
+      localStorage.setItem('user', JSON.stringify(user));
+
+      // Add the movie to favorites on the backend server
+      this.fetchApiData.addFavoriteMovie(movie._id).subscribe(
+        () => {
+          console.log('Movie added to favorites successfully.');
+        },
+        (error) => {
+          console.error('Error adding movie to favorites:', error);
+        }
+      );
     }
-    
-    }
+
+    // Update the local 'isFavorite' property to reflect the change
+    movie.isFavorite = !this.isMovieFavorite(movie);
+  }
+
+  // Function to check if a movie is in favorites
+  isMovieFavorite(movie: any): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.favoriteMovies && user.favoriteMovies.includes(movie._id);
+  }
+}

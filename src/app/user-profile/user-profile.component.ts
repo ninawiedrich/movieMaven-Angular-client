@@ -22,11 +22,16 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-this.getUser();
+    const username = localStorage.getItem('username') || '';
+    if (username) {
+      this.getUser(username);
+    } else {
+      console.error('Username not found in local storage');
+    }
   }
 
-  getUser(): void {
-    this.fetchApiData.getOneUser().subscribe((response: any) => {
+  getUser(username: string): void {
+    this.fetchApiData.getOneUser(username).subscribe((response: any) => {
       this.user = response;
       this.userData.username = this.user.username;
       this.userData.email = this.user.email;
@@ -34,19 +39,14 @@ this.getUser();
         console.log('User Birthday:', this.user.birthday);
         this.userData.birthday = formatDate(this.user.birthday, 'yyyy-MM-dd', 'en-US', 'UTC+0');
       }
-  
+
       this.fetchApiData.getAllMovies().subscribe((response: any) => {
-        if (this.user.favoriteMovies && Array.isArray(this.user.favoriteMovies)) {
-          this.favoriteMovies = response.filter((m: { _id: any }) => this.user.favoriteMovies.indexOf(m._id) >= 0);
-        } else {
-          this.favoriteMovies = [];
-        }
-      });
+        this.favoriteMovies = response.filter((m: { _id: any }) => this.user.favoriteMovies.indexOf(m._id) >= 0)
+      })
     }, (error) => {
       console.error('Error fetching user data', error);
-    });
+    })
   }
-  
 
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((data) => {
@@ -80,3 +80,4 @@ this.getUser();
     }
   }
 }
+

@@ -125,7 +125,7 @@ export class FetchApiDataService {
     return user.favoriteMovies.indexOf(movieId) >= 0;
   }
 
-  
+  // Making the api call for the edit user endpoint
   editUser(updatedUser: any): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');

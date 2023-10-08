@@ -3,18 +3,35 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MatDialog } from '@angular/material/dialog';
+
+/**
+ * Root component of the application.
+ * 
+ * @component
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  
+  /**
+   * Title of the application.
+   */
   title = 'myFlix-Angular-client';
 
+  /**
+   * Constructor to initialize the AppComponent.
+   * 
+   * @param dialog Service to open Material Design modal dialogs.
+   */
   constructor(public dialog: MatDialog) { }
 
 
-  // This function will open the movies dialog
+  /**
+   * Opens the movies dialog.
+   */
   openMoviesDialog(): void {
     this.dialog.open(MovieCardComponent, {
       width: '500px'

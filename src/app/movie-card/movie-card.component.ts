@@ -6,6 +6,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { GenreInfoComponent } from '../genre-info/genre-info.component';
 import { DirectorInfoComponent } from '../director-info/director-info.component';
 
+/**
+ * A component that represents a movie card.
+ */
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -13,6 +16,12 @@ import { DirectorInfoComponent } from '../director-info/director-info.component'
 })
 export class MovieCardComponent {
   movies: any[] = [];
+
+  /**
+   * @param fetchApiData - Service to fetch movie data.
+   * @param snackbar - Service to show snack bar notifications.
+   * @param dialog - Service to open dialogs.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackbar: MatSnackBar,
@@ -23,6 +32,9 @@ export class MovieCardComponent {
     this.getMovies();
   }
 
+  /**
+   * Fetches all movies from the API and updates the movies property.
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -31,6 +43,11 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Opens a dialog with movie details.
+   * @param title 
+   * @param description 
+   */
   openMovieInfo(title: string, description: string): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
@@ -40,6 +57,10 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Opens a dialog with genre details.
+   * @param genre 
+   */
   openGenreInfo(genre: any): void {
     console.log('Genre Object:', genre);
     this.dialog.open(GenreInfoComponent, {
@@ -49,6 +70,10 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Opens a dialog with director details.
+   * @param director
+   */
   openDirectorInfo(director: any): void {
     this.dialog.open(DirectorInfoComponent, {
       data: {
@@ -59,7 +84,10 @@ export class MovieCardComponent {
     });
   }
 
-  // Function to add/remove movie to/from favorites
+  /**
+   * Toggles a movie's favorite status for the user.
+   * @param movie - The movie to be added/removed from favorites.
+   */
   toggleFavorite(movie: any): void {
     // Toggle the favorite status of the movie
     if (this.isMovieFavorite(movie)) {
@@ -100,7 +128,11 @@ export class MovieCardComponent {
     movie.isFavorite = !this.isMovieFavorite(movie);
   }
 
-  // Function to check if a movie is in favorites
+    /**
+   * Checks if a movie is in the user's favorites.
+   * @param movie - The movie to check.
+   * @returns A boolean indicating if the movie is in favorites.
+   */
   isMovieFavorite(movie: any): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.favoriteMovies && user.favoriteMovies.includes(movie._id);

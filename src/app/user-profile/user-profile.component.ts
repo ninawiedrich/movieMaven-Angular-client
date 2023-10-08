@@ -4,6 +4,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 
+/**
+ * Component that provides user profile functionalities.
+ * 
+ * @component
+ */
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -13,18 +18,36 @@ export class UserProfileComponent implements OnInit {
 
   user: any = {};
   favoriteMovies: any[] = [];
+
+  /**
+   * Input data for the user profile.
+   */
   @Input() userData = { username: '', password: '', email: '', birthday: '' };
 
+  
+  /**
+   * Constructor for the UserProfileComponent.
+   * 
+   * @param fetchApiData Service to handle the API calls.
+   * @param snackBar For showing notifications to the user.
+   * @param router For navigating to different routes.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
     private router: Router,
   ) { }
 
+  /**
+   * Lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit(): void {
 this.getUser();
   }
 
+  /**
+   * Fetch the user's data and their favorite movies.
+   */
   getUser(): void {
     this.fetchApiData.getOneUser().subscribe((response: any) => {
       this.user = response;
@@ -47,7 +70,9 @@ this.getUser();
     });
   }
   
-
+  /**
+   * Edit the user's profile data.
+   */
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((data) => {
       localStorage.setItem('user', JSON.stringify(data));
@@ -63,6 +88,9 @@ this.getUser();
     });
   }
 
+  /**
+   * Delete the user's account.
+   */
   deleteUser(): void {
     if (confirm('are you sure?')) {
       this.router.navigate(['welcome']).then(() => {

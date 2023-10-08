@@ -12,14 +12,31 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // This import is used to enable navigation from one component to another
 import { Router } from '@angular/router';
 
+/**
+ * Component that provides a user login form.
+ * 
+ * @component
+ */
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss'],
 })
 export class UserLoginFormComponent implements OnInit {
+  
+  /**
+   * Input data for the login form.
+   */
   @Input() loginData = { username: '', password: '' };
 
+  /**
+   * Constructor for the UserLoginFormComponent.
+   * 
+   * @param fetchApiData Service to handle the API calls.
+   * @param dialogRef Reference to the dialog opened.
+   * @param snackBar For showing notifications to the user.
+   * @param router For navigating to different routes.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -27,8 +44,14 @@ export class UserLoginFormComponent implements OnInit {
     private router: Router
   ) {}
 
+  /**
+   * Lifecycle hook that is called after data-bound properties are initialized.
+   */
   ngOnInit(): void {}
 
+  /**
+   * Send the user login form data to the backend and handle the response.
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.loginData).subscribe(
       (result) => {

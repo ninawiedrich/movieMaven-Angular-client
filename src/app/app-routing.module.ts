@@ -4,6 +4,9 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
+/**
+ * Definition of the application's routes.
+ */
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
@@ -11,6 +14,11 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
+/**
+ * Module responsible for the routing configuration of the application.
+ * 
+ * @module
+ */
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
